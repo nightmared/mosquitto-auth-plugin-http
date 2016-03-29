@@ -1,11 +1,9 @@
 NAME      = mosquitto_auth_plugin_http
 
-MOSQUITTO = $(HOME)/mosquitto-1.3.5
-INC       = -I. -I$(MOSQUITTO)/lib -I$(MOSQUITTO)/src
-CFLAGS    = -Wall -Werror -fPIC
-#DEBUG     = -DMQAP_DEBUG
+INC       = -I. -I/usr/include -I/usr/include/json-c/
+CFLAGS    = -Wall -Werror -fPIC -std=c11
 
-LIBS      = -lcurl
+LIBS      = -lcurl -ljson-c
 
 all: $(NAME).so
 
@@ -17,4 +15,3 @@ $(NAME).so: $(NAME).o
 
 clean:
 	rm -f *.o *.so
-
